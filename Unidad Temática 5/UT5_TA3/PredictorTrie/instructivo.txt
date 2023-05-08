@@ -1,0 +1,8 @@
+UT2-TA3
+
+1.- Copiar el archivo .form y .java a la carpeta correspondiente dentro del repositorio de trabajo grupal.
+2.- Renombrar la declaración de package
+3.- Copiar los archivos de datos al repositorio.
+4.- Completar código:
+	4.1 Constructor de TriePrefixAEDIIGUI. Cargar Trie desde archivo de texto
+	4.2 Método jtfSearchKeyReleased - Hacer la llamada al método predecir a partir del prefijo ingresado.

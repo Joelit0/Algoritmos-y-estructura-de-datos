@@ -1,0 +1,85 @@
+1)
+
+Árbol:
+
+Insertar(unaEtiqueta, etiquetaPadre)
+COM
+    Si Raiz == nulo
+        Raiz = Nuevo Nodo(unaEtiqueta)
+        Devolver Verdadero
+    FinSi
+
+    Si etiquetaPadre == ''
+        nuevaRaiz = Nuevo Nodo(unaEtiqueta)
+        nuevaRaiz.primerHijo = Raiz.primerHijo
+        nuevaRaiz.hermanoDerecho = Raiz.hermanoDerecho
+        Raiz = nuevaRaiz
+
+        Devolver Verdadero
+    FinSi
+
+    Devolver Raiz.Insertar(unaEtiqueta, etiquetaPadre)
+FIN
+
+Nodo:
+
+Insertar(unaEtiqueta, etiquetaPadre)
+COM
+    Si etiqueta == etiquetaPadre
+        Si primerHijo <> nulo
+            temp = primerHijo
+
+            Mientras temp.hermanoDerecho <> nulo
+                temp = temp.hermanoDerecho
+            FinMientras
+
+            temp.hermanoDerecho = Nuevo Nodo(unaEtiqueta)
+        Sino
+            primerHijo = Nuevo Nodo(unaEtiqueta)
+        FinSi
+
+        Devolver Verdadero
+    FinSi
+
+    encontrado = Falso
+
+    Si hermanoDerecho <> nulo
+        encontrado = hermanoDerecho.Insertar(unaEtiqueta, etiquetaPadre)
+    FinSi
+
+    Si primerHijo <> nulo Y encontrado == Falso
+        encontrado = primerHijo.Insertar(unaEtiqueta, etiquetaPadre)
+    FinSi
+
+    Devolver encontrado
+Fin
+
+2)
+Casos de prueba - Lenguaje Natural
+
+Insertar: Crear un arbol genérico con ciertos nodos. Luego llamar al
+          método insertar pasandole una etiqueta para el nuevo nodo
+          a insertar y pasarle también la etiqueta del padre del
+          nuevo nodo a insertar.
+
+          De esta manera ya podríamos testear 2 casos, pasarle una
+          etiqueta del padre válida y una inválida. En el primer
+          caso debería devolvernos VERDADERO y en el otro FALSO debido
+          a que no encontró el padre
+
+          También podríamos intentar insertar en un árbol vacío y este
+          debería de devolvernos VERDADERO ya que lo pone como raíz
+
+          Y por último, podríamos pasarle una etiquetaPadre vacía y
+          debería de crear el nuevo nodo como raíz
+
+Buscar: Crear un arbol genérico con ciertos nodos. Luego llamar al
+        método buscar pasandolé una etiqueta. Ahi tenemos nuevamente
+        2 casos, el primero sería pasarle una etiqueta válida y devolverá
+        el nodo y el otro caso devuelve NULO debido a que no lo encontró.
+
+        También podríamos buscar nodos en un arbol vacío, lo cual debería de
+        devolvernos nulo
+
+Listar Identado: Podríamos crear un árbol genérico con ciertos nodos y listar el arbol.
+                 Podríamos intentar un árbol vacío

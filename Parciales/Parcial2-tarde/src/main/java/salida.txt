@@ -1,0 +1,26 @@
+compilaciones para core
+junit
+core
+compilaciones para mevir-util
+antlr
+commons-validator
+commons-chain
+struts-core
+struts-taglib
+velocity-tools
+core
+struts-tiles
+mevir-util
+compilaciones para core
+junit
+core
+compilaciones para mevir-util
+antlr
+commons-validator
+commons-chain
+struts-core
+struts-taglib
+velocity-tools
+core
+struts-tiles
+mevir-util

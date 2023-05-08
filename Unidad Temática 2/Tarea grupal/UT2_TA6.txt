@@ -1,0 +1,14 @@
+¿Cumple este algoritmo recursivo con los requerimientos para
+programación dinámica?
+
+Si porque fibonacci necesita reutilizar valores ya calculados anteriormente
+
+–¿Sub-problemas superpuestos?
+		Si utilizamos fibonacci recursivo binario tenemos el problema del cálculo
+		repetitivo del cálculo ya hecho. Lo que nos da el problema de sub-problemas superpuestos
+
+–¿Subestructuras óptimas?
+		Lo más óptimo sería usar un Map guardando el número como clave y el resultado sería el valor.
+
+–¿podemos usar “Memoización”?
+		Como dijimos anteriormente utilizar memorización nos ayudaría a no repetir cálculos.

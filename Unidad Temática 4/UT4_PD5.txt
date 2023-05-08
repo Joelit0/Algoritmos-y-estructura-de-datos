@@ -1,0 +1,249 @@
+1)
+Lenguaje natural: Recorrer toda la parte izquierda del arbol hasta llegar a una hoja, es decir, por cada nodo
+                  ir bajando hacia su hijo izquierdo(si tiene) hasta que este siga teniendo hijo izquierdo.
+                  De esta manera, siempre estamos yendo hacia el menor.
+                  Si no tiene hijo izquierdo devolver el nodo actual.
+
+Precondiciones: Tiene que haber un arbol
+                Tiene que ser un arbol binario de busqueda
+
+PostCondiciones: El arbol no tiene que ser modificado
+
+Arbol:
+
+obtenerMenor(): Nodo O(N)
+    Si raiz == nulo
+        devolver nulo O(1)
+    Sino
+        devolver raiz.obtenerMenor()  O(N)
+    Finsi
+Fin
+
+Nodo:
+
+obtenerMenor(): Nodo        O (N)
+    Si HijoIzquierdo == nulo
+        devolver this O(1)
+    Sino
+        Devolver HijoIzquierdo.obtenerMenor() N - 1 veces
+    FinSi
+Fin
+
+
+2)
+Lenguaje natural: Recorrer toda la parte derecha del arbol hasta llegar a una hoja, es decir, por cada nodo
+                  ir bajando hacia su hijo derecho(si tiene) hasta que este siga teniendo hijo derecho. De
+                  esta manera siempre estamos yendo hacia el mayor.Si no tiene hijo derecho devolver
+                  el nodo actual.
+
+Precondiciones: Tiene que haber un arbol
+                Tiene que ser un arbol binario de busqueda
+
+PostCondiciones: El arbol no tiene que ser modificado
+
+Arbol:
+
+obtenerMayor(): Nodo O(N)
+    Si raiz == nulo
+        devolver nulo O(1)
+    Sino
+        devolver raiz.obtenerMayor() O(N)
+    Finsi
+Fin
+
+Nodo:
+
+obtenerMayor(): Nodo    O(N)
+    Si HijoDerecho == nulo
+        devolver this O(1)
+    Sino
+        Devolver HijoDerecho.obtenerMayor() n - 1 veces
+    FinSi
+Fin
+
+3)
+
+Lenguaje natural: Por cada nodo, verificar si la clave es menor a la del nodo actual, si es así,
+                  preguntar si su hijoIzquierdo tiene la misma clave que estamos buscando. Si esto se
+                  cumple debemos devolver el nodo actual(ya que es el anterior), en caso contrario,
+                  utilizamos la recursividad para llamar a este mismo método pero ahora con el HijoIzquierdo
+
+                  Repetimos lo mismo para el HijoDerecho, solo que ahora deberíamos verificar si la clave es mayor
+                  que la del nodo actual(para de esta forma poder hacer el lado derecho).
+
+Precondiciones: Tiene que haber un arbol
+                Tiene que ser un arbol binario de busqueda
+                Debe de proporcionarse una clave
+
+PostCondiciones: El arbol no tiene que ser modificado
+
+
+Arbol:
+
+AnteriorAClaveDada(clave): Nodo     O(N)
+    Si raiz == nulo
+        devolver nulo O(1)
+    Sino
+        Devolver raiz.AnteriorAClaveDada(clave) O (N)
+    Finsi
+Fin
+
+Nodo:
+
+AnteriorAClaveDada(clave): Nodo     O(N)
+    Si clave < this.clave
+        Si HijoIzq <> nulo O(1)
+            Si HijoIzq.clave == this.clave O(1)
+                Devolver this O (1)
+            Sino
+                Devolver HijoIzq.AnteriorAClaveDada(clave) N - 1 veces
+            FinSi
+        Sino
+            Devolver  O(1)
+        Finsi
+    FinSi
+
+    Si clave > this.clave
+        Si HijoDer <> nulo O(1)
+            Si HijoDer.clave == this.clave O(1)
+                Devolver this O (1)
+            Sino
+                Devolver HijoDer.AnteriorAClaveDada N - 1 veces
+            FinSi
+        Sino
+            Devolver nulo O(1)
+        Finsi
+    FinSi
+Fin
+
+4)
+
+Lenguaje natural: Recorrer el árbol usando recursividad y de esa manera ir decrementando el
+                  parámetro nivel hasta llegar al caso base que devuelve 1. afirmando que cuando el nivel
+                  llegó a 0 ( debido a decrementarlo) hay un nodo en ese nivel.
+
+Precondiciones: Que exista un árbol
+                Que el nivel sea válido
+
+PostCondiciones: Que el arbol no se modifique
+
+Arbol:
+
+NodosPorNivel(nivel) : entero   O(N)
+    Si raiz == nulo
+        devolver 0 O(1)
+    Sino
+        devolver raiz.NodosPorNivel(Nivel)  O(N)
+    FinSi
+Fin
+
+Nodo:
+
+NodosPorNivel(nivel) : entero     O(N)
+    cantNodos = 0 O(1)
+
+    Si nivel == 0 O(1)
+        cantNodos = cantNodos + 1 O(1)
+    FinSi
+
+    Devolver cantNodos
+
+    Si HijoDer <> nulo O(1)
+        cantNodos = cantNodos + HijoDer.NodosPorNivel(nivel - 1) N-1 veces
+    FinSi
+
+    Si HijoIzq <> nulo O(1)
+        cantNodos = cantNodos + HijoIzq.NodosPorNivel(nivel - 1) N-1 veces
+    FinSi
+
+    Devolver cantNodos  O(1)
+Fin
+
+5)
+
+Lenguaje natural: Por cada nodo verificar si no tiene hijo izquierdo ni hijo derecho, de esta
+                  manera será una hoja y solo debemos de imprimir sus datos con un nivel pasado
+                  por parámetro que comenzará desde 0(debido al nivel de la raíz).
+
+                  En caso de que tenga Hijo Izquierdo o Hijo Derecho, en cualquiera de esos casos
+                  deberemos utilizar la recursividad para llamar al mismo método pero ahora pasar
+                  por parámetro el nivel actual + 1. De esta manera iremos incrementando el nivel
+                  hasta llegar al caso base y que se imprima el nodo que sea una hoja.
+
+Precondiciones: Que exista un arbol
+Postcondiciones: Que el arbol no haya sido modificado
+
+Arbol:
+
+HojasConNivel()  O(N)
+    Si raiz == nulo
+        Imprimir nulo O(1)
+    Sino
+        raiz.HojasConNivel(0) O(N)
+    FinSi
+Fin
+
+Nodo:
+
+HojasConNivel(nivelActual)      O(N)
+    Si HijoIzq == Nulo y HijoDer == Nulo    O(1)
+        Imprimir this " + " nivelActual O(1)
+    Sino
+        Si HijoIzq <> nulo O(1)
+            HijoIzq.HojasConNivel(nivelActual + 1) N - 1 veces
+        FinSi
+
+        Si HijoDer <> nulo O(1)
+            HijoDer.HojasConNivel(nivelActual + 1) N - 1 veces
+        FinSi
+    FinSi
+Fin
+
+6)
+
+Arbol:
+
+Lenguaje natural: Para verificar si un arbol es de búsqueda debemos verificar si su hijo izquierdo(si tiene)
+                  es menor que el nodo actual, es decir, su padre. Si esto se cumple debemos llamar a la
+                  recursividad para verificar lo mismo con el Hijo izquierdo. En caso contrario, ya sabemos que
+                  no se cumple debido a que el Hijo izquierdo no es menor. Luego verificar lo mismo con el Hijo
+                  derecho pero ahora con la condición de si es mayor. Cuando el hijo derecho y el hijo izquierdo
+                  sean nulo, devolveremos true.
+
+PreCondiciones: Que exista un arbol
+                Que sea un arbol válido(en este caso binario)
+
+PostCondiciones: Que el arbol no se modifique
+
+EsDeBusqueda() : booleano   O(N)
+    Si raiz == nulo
+        Imprimir nulo O(1)
+    Sino
+        raiz.EsDeBusqueda() O(N)
+    FinSi
+Fin
+
+Nodo:
+
+EsDeBusqueda() : booleano O(N)
+
+    Si HijoIzq == nulo Y HijoDer == nulo O(2)
+        Devolver True   O(1)
+    FinSi
+
+    Si HijoIzq <> nulo  O(1)
+        Si HijoIzq.clave < this.clave   O(1)
+            Devolver HijoIzq.EsDeBusqueda() N - 1 veces
+        Sino
+            Devolver falso O(1)
+        FinSi
+    FinSi
+
+    Si HijoDer <> nulo O(1)
+        Si HijoDer.clave < this.clave O(1)
+            Devolver HijoDer.EsDeBusqueda() N - 1 veces
+        Sino
+            Devolver falso O(1)
+        FinSi
+    FinSi
+Fin

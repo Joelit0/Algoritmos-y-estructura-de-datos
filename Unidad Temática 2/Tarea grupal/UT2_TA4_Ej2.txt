@@ -1,0 +1,12 @@
+Pregunta a:	Es posible aplicar dividir y conquistar, porque se puede dividir el problema en dos subproblemas hasta llegar a la ultima hoja.
+
+Pregunta b:	Para cualquier arbol se puede aplicar dividir y conquistar.
+
+Pregunta c:	Los sub problemas son la altura de los hijos del nodo, hasta llegar a la hoja, la hoja tambien seria un subproblema.
+
+Pregunta d:	Con un contador que cuente los nodos padres hasta llegar a una hoja, la hoja mas profunda del arbol seria la de mayor valor, y se le suma +1 por la raiz para hallar la altura.
+
+Pregunta e:	Quedandote con el contador mas grande y sumandole +1 para obtener la altura.
+
+Pregunta f:	Si es Arbol binario de busqueda, Ln(n).
+

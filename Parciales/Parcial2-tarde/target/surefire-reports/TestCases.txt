@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: TestCases
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.047 s <<< FAILURE! - in TestCases
+testUnaDependencia  Time elapsed: 0.041 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1> but was: <2>
+	at TestCases.testUnaDependencia(TestCases.java:71)
+

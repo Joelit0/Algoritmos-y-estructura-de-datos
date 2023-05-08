@@ -1,0 +1,138 @@
+Ejercicio 1
+
+Lenguaje Natural:
+    Separar el texto en palabras, por cada palabra separarla en letras. Previo a iterar
+    las letras se guarda en una variable la raiz. Si la variable (que almacena un nodo)
+    tiene un hijo con esa letra se modifica la variable a ese hijo y el For o ParaCada
+    salta hacia la letra siguie nte y se vuelve a preguntar lo mismo por cada letra.
+
+    En caso de que la letra no exista en los hijos de dicha variable, se crea el nodo.
+    Al final de la iteración de la palabra se verifica que la hoja tenga el EsPalabra
+    en verdadero y se le inserta la página pasada por parámetro en su aytributo linked list
+    llamado páginas.
+
+    Al final del algoritmo se ha logrado que por cada palabra se llega a la hoja, ya sea
+    insertando la palabra o simplemente navegando por los nodos hasta llegar a ella.
+    Y al final se insertan las páginas en su hoja que concluye en la palabra.
+
+Pre Condiciones:
+    - Debe brindarse un texto válido
+    - Debe de brindarse la página de dicho texto
+
+Post Condiciones:
+    - Las palabras quedan insertadas aunque no existan
+    - Cada palabra debe tener la página en su linked list
+
+Pseudocódigo:
+    Arbol:
+        ConstruirIndice(texto: String, pagina: int) O(N^2)
+        COM
+            palabras = texto.separarPalabras() O(N)
+
+            Para cada palabra en palabras hacer O(N^2)
+                nodoPadre = raiz O(1)
+
+                Para cada letra en palabra hacer O(N)
+                    hijo = nodoPadre.obtenerHijo(letra) O(N)
+
+                    Si hijo == nulo O(1)
+                        nodoPadre.insertarHijo(letra) O(N)
+                        nodoPadre = nodoPadre.obtenerHijo(letra) O(N)
+                    Sino
+                        nodoPadre = hijo O(1)
+                    FinSi
+                FinParaCada
+
+                Si nodoPadre.esPalabra == false O(1)
+                    nodoPadre.esPalabra = true O(1)
+                FinSi
+
+                nodoPadre.Paginas.insertar(pagina) O(N)
+            FinPara
+        Fin
+
+    Nodo:
+        insertarHijo(Comparable etiqueta): Booleano O(N)
+            Si primerHijo == nulo O(1)
+                primerHijo = nuevo Nodo(etiqueta) O(1)
+            Sino
+                aux = primerHijo O(1)
+
+                Mientras aux.hermanoDerecho <> nulo O(N)
+                    aux = aux.hermanoDerecho O(1)
+                FinMientras
+
+                aux.hermanoDerecho = nuevo Nodo(etiqueta) O(1)
+            FinSi
+
+            Devolver Verdadero O(1)
+        Fin
+
+        obtenerHijo(Comparable: etiqueta): Nodo O(N)
+            aux = primerHijo O(1)
+
+            Mientras aux <> nulo O(N)
+                Si aux.etiqueta == etiqueta O(1)
+                    Devolver aux O(1)
+                FinSi
+
+                aux = aux.hermanoDerecho O(1)
+            FinMientras
+
+            Devolver Nulo O(1)
+        Fin
+
+    LinkedList:
+        insertar(Comparable: etiqueta): Booleano O(N)
+            Si primerNodo == nulo O(1)
+                primerNodo = Nuevo Nodo(etiqueta) O(1)
+            Sino
+                aux = primerNodo O(1)
+
+                Mientras aux.siguiente <> nulo O(N)
+                    aux = aux.siguiente O(1)
+                FinMientras
+
+                aux.siguiente = Nuevo Nodo(etiqueta) O(1)
+            FinSi
+
+            Devolver Verdadero O(1)
+        FinSi
+
+
+¿Cuántas comparaciones realiza el algoritmo de búsqueda si el argumento es “Programa”?
+
+Realiza 10 comparaciones. Al existir la palabra, hace mas comparaciones que las que se
+insertarán luego.
+
+¿Cuántas comparaciones realiza el algoritmo de búsqueda si el argumento es “Proselitismo?
+
+Realiza 6 comparaciones. Al no existir la palabra se ahorra comparar muchas letras
+
+¿Cuántas comparaciones se realizan para insertar la palabra “cazadores”?
+
+Realiza 7 comparaciones. Al no existir la palabra se ahorra comparar muchas letras
+¿cuál es la altura del árbol trie resultante?
+La altura del arbol dibujado es 12 debido a que la palabra mas larga es PROGRAMACION
+
+¿cuál es su tamaño?
+El tamaño del arbol dibujado es 45
+
+Ejercicio 2
+
+BuscarPáginasDePalabra(String palabra): LinkedList
+COM
+    nodoPadre = raiz O(1)
+
+    Para cada letra en palabra hacer O(N)
+        hijo = nodoPadre.obtenerHijo(letra) O(N)
+
+        Si hijo == nulo O(1)
+            Devolver Nulo O(1)
+        Sino
+            nodoPadre = hijo O(1)
+        FinSi
+    FinParaCada
+
+    Devolver nodoPadre.Páginas O(1)
+FIN

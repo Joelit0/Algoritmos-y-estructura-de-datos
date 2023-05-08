@@ -1,0 +1,16 @@
+public int buscar(String s) {
+        TNodoTrie nodo = this;
+        int temp = 0;
+        for (int c = 0; c < s.length(); c++) {
+            int indice = s.charAt(c) - 'a';
+            temp++;
+            if (nodo.hijos[indice] == null) {
+                return -temp;
+            }
+            nodo = nodo.hijos[indice];
+        }
+        if (nodo.esPalabra) {
+            return temp;
+        }
+        return -temp;
+    }
